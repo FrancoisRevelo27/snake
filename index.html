@@ -80,11 +80,33 @@
         button:hover {
             background-color: #ddd;
         }
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: rgba(95, 91, 91, 0.543);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px #000;
+        }
+        .menu select {
+            font-size: 1em;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>Snake Game</h1>
     <div id="score">Score: 0</div>
+    <div class="menu">
+        <label for="speedSelect">Dificultad:</label>
+        <select id="speedSelect" onchange="changeSpeed(this.value)">
+            <option value="150">Normal</option>
+            <option value="200">Lento</option>
+            <option value="100">Rápido</option>
+        </select>
+    </div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     
     <div id="gameOver" class="modal">

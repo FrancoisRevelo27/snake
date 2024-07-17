@@ -7,8 +7,8 @@ const instructions = document.getElementById('instructions');
 
 // Tamaño de cada celda
 const cellSize = 20;
-// Velocidad del juego (intervalo en milisegundos)
-const gameSpeed = 105;
+// Velocidad inicial del juego (intervalo en milisegundos)
+let gameSpeed = 150; // Valor por defecto
 
 // Variables del juego
 let snake = [{ x: 200, y: 200 }];
@@ -158,6 +158,13 @@ function resetGame() {
     updateScore();
     placeFood();
     gameOverDisplay.style.display = 'none';
+    gameInterval = setInterval(update, gameSpeed);
+}
+
+// Cambia la velocidad del juego
+function changeSpeed(speed) {
+    gameSpeed = parseInt(speed);
+    clearInterval(gameInterval);
     gameInterval = setInterval(update, gameSpeed);
 }
 
