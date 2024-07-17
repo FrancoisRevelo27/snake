@@ -45,6 +45,7 @@ function changeDirection(event) {
 
 // Maneja el evento touchstart
 function handleTouchStart(event) {
+    event.preventDefault(); // Evita el desplazamiento de la página
     const firstTouch = event.touches[0];
     touchStartX = firstTouch.clientX;
     touchStartY = firstTouch.clientY;
@@ -52,6 +53,7 @@ function handleTouchStart(event) {
 
 // Maneja el evento touchmove
 function handleTouchMove(event) {
+    event.preventDefault(); // Evita el desplazamiento de la página
     if (!touchStartX || !touchStartY) {
         return;
     }
