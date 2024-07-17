@@ -12,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #000;
+            background: #a1c45a; /* Color de fondo verde claro simulando césped */
             color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
@@ -22,14 +22,19 @@
             padding: 0;
             font-size: 2.5em;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
         }
         #score {
             font-size: 1.5em;
             margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 4px #000;
         }
-        canvas {
-            border: 2px solid #fff;
-            background-color: #111;
+        #gameCanvas {
+            border: 10px solid #a54200; /* Bordes gruesos simulando ladrillos */
+            background: repeating-linear-gradient(45deg, #9bc776, #9bc776 10px, #93b66f 10px, #93b66f 20px); /* Patrón de cuadros verdes bajitos simulando césped */
             touch-action: none; /* Evitar desplazamiento táctil */
         }
         #gameOver {
@@ -47,6 +52,7 @@
             cursor: pointer;
             margin-top: 10px;
             border-radius: 5px;
+            box-shadow: 2px 2px 4px #000;
         }
         button:hover {
             background-color: #ddd;
@@ -63,10 +69,11 @@
             width: 80%;
             max-width: 500px;
             padding: 20px;
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.8);
             border: 2px solid #fff;
             border-radius: 10px;
             text-align: center;
+            box-shadow: 2px 2px 10px #000;
         }
         #instructions h2 {
             font-size: 1.5em;

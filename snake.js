@@ -138,27 +138,27 @@ function draw() {
     ctx.fillRect(food.x, food.y, cellSize, cellSize);
 }
 
-// Muestra el mensaje de Game Over y el puntaje final
+// Muestra el mensaje de Game Over
 function gameOver() {
     gameOverDisplay.style.display = 'block';
     finalScoreDisplay.textContent = score;
-}
-
-// Reinicia el juego
-function resetGame() {
-    gameOverDisplay.style.display = 'none';
-    snake = [{ x: 200, y: 200 }];
-    direction = { x: 0, y: 0 };
-    score = 0;
-    updateScore();
-    placeFood();
-    gameInterval = setInterval(update, gameSpeed);
 }
 
 // Oculta las instrucciones y comienza el juego
 function hideInstructions() {
     instructions.style.display = 'none';
     init();
+}
+
+// Reinicia el juego
+function resetGame() {
+    snake = [{ x: 200, y: 200 }];
+    direction = { x: 0, y: 0 };
+    score = 0;
+    updateScore();
+    placeFood();
+    gameOverDisplay.style.display = 'none';
+    gameInterval = setInterval(update, gameSpeed);
 }
 
 // Inicia el juego mostrando las instrucciones
