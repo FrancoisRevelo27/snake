@@ -14,13 +14,13 @@
             margin: 0;
             background-color: #000;
             color: #fff;
-            font-family: Arial, sans-serif;
-            overflow: hidden; /* Evitar scroll en dispositivos móviles */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
         h1 {
             margin: 0;
             padding: 0;
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
         #score {
@@ -30,11 +30,13 @@
         canvas {
             border: 2px solid #fff;
             background-color: #111;
+            touch-action: none; /* Evitar desplazamiento táctil */
         }
         #gameOver {
             display: none;
             font-size: 2em;
             color: red;
+            margin-top: 20px;
         }
         button {
             font-size: 1em;
@@ -44,9 +46,34 @@
             border: none;
             cursor: pointer;
             margin-top: 10px;
+            border-radius: 5px;
         }
         button:hover {
             background-color: #ddd;
+        }
+        #instructions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #333;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #instructions h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        #instructions p {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -56,6 +83,14 @@
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     <div id="gameOver">Game Over! Your score: <span id="finalScore"></span></div>
     <button onclick="resetGame()">Restart Game</button>
+    <div id="instructions">
+        <h2>Instrucciones</h2>
+        <p>Usa las teclas de flecha en el teclado para mover la serpiente.</p>
+        <p>En dispositivos móviles, desliza el dedo en la dirección que quieras mover la serpiente.</p>
+        <p>Come la comida roja para ganar puntos y crecer.</p>
+        <p>¡Evita chocar contra las paredes o contigo mismo!</p>
+        <button onclick="hideInstructions()">Aceptar</button>
+    </div>
     <script src="snake.js"></script>
 </body>
 </html>

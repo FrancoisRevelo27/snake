@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('score');
 const gameOverDisplay = document.getElementById('gameOver');
 const finalScoreDisplay = document.getElementById('finalScore');
+const instructions = document.getElementById('instructions');
 
 // Tamaño de cada celda
 const cellSize = 20;
@@ -154,5 +155,13 @@ function resetGame() {
     gameInterval = setInterval(update, gameSpeed);
 }
 
-// Inicia el juego
-init();
+// Oculta las instrucciones y comienza el juego
+function hideInstructions() {
+    instructions.style.display = 'none';
+    init();
+}
+
+// Inicia el juego mostrando las instrucciones
+document.addEventListener('DOMContentLoaded', () => {
+    instructions.style.display = 'block';
+});
