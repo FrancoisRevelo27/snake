@@ -16,6 +16,7 @@
             color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            position: relative; /* Añadido para posicionamiento relativo */
         }
         h1 {
             margin: 0;
@@ -31,17 +32,39 @@
             padding: 10px 20px;
             border-radius: 10px;
             box-shadow: 2px 2px 4px #000;
+            position: absolute; /* Añadido para posicionamiento absoluto */
+            top: 10px;
+            right: 10px;
         }
         #gameCanvas {
             border: 10px solid #a54200; /* Bordes gruesos simulando ladrillos */
             background: repeating-linear-gradient(45deg, #9bc776, #9bc776 10px, #93b66f 10px, #93b66f 20px); /* Patrón de cuadros verdes bajitos simulando césped */
             touch-action: none; /* Evitar desplazamiento táctil */
         }
-        #gameOver {
+        .modal {
             display: none;
-            font-size: 2em;
-            color: red;
-            margin-top: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000; /* Z-index alto para estar encima de todo */
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px #000;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .modal-content h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .modal-content p {
+            margin: 5px 0;
         }
         button {
             font-size: 1em;
@@ -57,47 +80,32 @@
         button:hover {
             background-color: #ddd;
         }
-        #instructions {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 500px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 2px solid #fff;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 2px 2px 10px #000;
-        }
-        #instructions h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        #instructions p {
-            margin: 5px 0;
-        }
     </style>
 </head>
 <body>
     <h1>Snake Game</h1>
     <div id="score">Score: 0</div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <div id="gameOver">Game Over! Your score: <span id="finalScore"></span></div>
-    <button onclick="resetGame()">Restart Game</button>
-    <div id="instructions">
-        <h2>Instrucciones</h2>
-        <p>Usa las teclas de flecha en el teclado para mover la serpiente.</p>
-        <p>En dispositivos móviles, desliza el dedo en la dirección que quieras mover la serpiente.</p>
-        <p>Come la comida roja para ganar puntos y crecer.</p>
-        <p>¡Evita chocar contra las paredes o contigo mismo!</p>
-        <button onclick="hideInstructions()">Aceptar</button>
+    
+    <div id="gameOver" class="modal">
+        <div class="modal-content">
+            <h2>Game Over!</h2>
+            <p>Your score: <span id="finalScore"></span></p>
+            <button onclick="resetGame()">Restart Game</button>
+        </div>
     </div>
+    
+    <div id="instructions" class="modal">
+        <div class="modal-content">
+            <h2>Instrucciones</h2>
+            <p>Usa las teclas de flecha en el teclado para mover la serpiente.</p>
+            <p>En dispositivos móviles, desliza el dedo en la dirección que quieras mover la serpiente.</p>
+            <p>Come la comida roja para ganar puntos y crecer.</p>
+            <p>¡Evita chocar contra las paredes o contigo mismo!</p>
+            <button onclick="hideInstructions()">Aceptar</button>
+        </div>
+    </div>
+    
     <script src="snake.js"></script>
 </body>
 </html>
